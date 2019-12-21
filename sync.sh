@@ -8,9 +8,9 @@ set -e
 
 function help
 {
-  echo "This script shifts srt subtitle file on a given offset in seconds (format hours:minutes:seconds:milliseconds)"
+  echo "This script shifts srt subtitle file on a given offset (format hours:minutes:seconds:milliseconds)"
   echo ""
-  echo "Usage: $0 --file <srt_file_path> --offset <offset_in_seconds>" --forward --backward
+  echo "Usage: $0 --file <srt_file_path> --offset <offset>" --forward --backward
 }
 
 function add_offset
