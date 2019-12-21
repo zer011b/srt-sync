@@ -126,6 +126,8 @@ dos2unix $filename &> /dev/null
 offset_mseconds=$(echo $offset | awk -F ":" '{print (($1 * 60 + $2) * 60 + $3) * 1000 + $4}')
 offset_mseconds=$(echo $offset_mseconds $direction | awk '{print $1 * $2}')
 
+new_index=$((0))
+
 while IFS= read -r line
 do
   # Record in srt format is next:
@@ -155,7 +157,8 @@ do
   new_end=$(add_offset $end $offset_mseconds)
 
   if [ "$new_end" != "00:00:00,000" ]; then
-    echo "$index" >> $output
+    new_index=$((new_index+1))
+    echo "$new_index" >> $output
     echo "$new_start --> $new_end" >> $output
   fi
 
